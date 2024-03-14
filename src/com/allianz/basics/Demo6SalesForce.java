@@ -15,16 +15,18 @@ public class Demo6SalesForce {
         driver.get("https://www.salesforce.com/in/form/signup/freetrial-sales/");
         driver.findElement(By.name("UserFirstName")).sendKeys("John");
         driver.findElement(By.name("UserLastName")).sendKeys("Wick");
-        //driver.findElement(By.name("CompanyCountry")).sendKeys("United Kingdom");
-        driver.findElement(By.name("UserEmail")).sendKeys("johnwick@gmail.com");
-        driver.findElement(By.name("UserTitle")).sendKeys("IT Manager");
+        driver.findElement(By.xpath("//input[@name='UserEmail']")).sendKeys("john@gmail.com");
         driver.findElement(By.xpath("//input[@name='CompanyName']")).sendKeys("Allianz");
-        driver.findElement(By.name("CompanyEmployees")).sendKeys("101-200 Employees");
-        driver.findElement(By.xpath("//div[@class='checkbox-ui'][2]")).click();
-        //driver.findElement(By.xpath("//div[@class='checkbox-ui']")).click();
-        //driver.findElement(By.id("rejectInvite")).click();
-        //driver.findElement(By.xpath("//div[@class='checkbox-ui']")).click();
-        driver.findElement(By.name("start my free trial")).click();
+        Select usertitle=new Select(driver.findElement(By.xpath("//select[@name='UserTitle']")));
+        usertitle.selectByVisibleText("IT Manager");
+        Select Employees=new Select(driver.findElement(By.xpath("//select[@name='CompanyEmployees']")));
+        Employees.selectByVisibleText("101 - 200 employees");
+        driver.findElement(By.name("UserLastName")).click();
+        driver.findElement(By.xpath("(//div[@class='checkbox-ui'])[2]")).click();
+        Select country=new Select(driver.findElement(By.xpath("//select[@name='CompanyCountry']")));
+        country.selectByVisibleText("United Kingdom");
+        driver.findElement(By.xpath("//button[@name='start my free trial']")).click();
+        //driver.quit();
 
 
 
