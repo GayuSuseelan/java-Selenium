@@ -25,6 +25,12 @@ public class DemoCityBank {
         driver.findElement(By.xpath("//input[@id='citiCard4']")).click();
         driver.findElement(By.xpath("//input[@id='citiCard4']")).sendKeys("2344");
         driver.findElement(By.id("cvvnumber")).sendKeys("413");
+        driver.findElement(By.id("bill-date-long")).click();
+        Select year=new Select(driver.findElement(By.xpath("//select[@class='ui-datepicker-year']")));
+        year.selectByVisibleText("2022");
+        Select month=new Select(driver.findElement(By.xpath("//select[@class='ui-datepicker-month']")));
+        month.selectByVisibleText("Apr");
+        driver.findElement(By.xpath("//input[@value='PROCEED']")).click();
 
 
 
